@@ -20,6 +20,6 @@ ___________
 After looking around the source code, the best thing we can start from is the hint provided for us: "Only people who use the official PicoBrowser are allowed on this site!".
 Thus we will go immediatly to fire Burp Suite & play around with the HTTP Headers.
 > I'll consider that you have already set up your Burp, if not I suggest that you check one of the available guide on the internet, it is highly recommended to have Burp Suite by your side when doing Web stuff.. 
-## 
+## Divining In
 
 
