@@ -8,13 +8,16 @@ tags: [web, writeup, easy]
 
 # Overview
 > Author: MADSTACKS 
+___________________
 ## Challenge Description
 > Let me in. Let me iiiiiiinnnnnnnnnnnnnnnnnnnn 
+___________________
 ## Challenge Hints
 >1. It ain't much, but it's an RFC https://tools.ietf.org/html/rfc2616
+___________________
 ## Challenge Page
 ![[Challenge Page]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/1.png?raw=true "Challenge Page")
-___________
+___________________
 # Walkthrough
 ## BEFORE WE START!!
 
@@ -22,17 +25,18 @@ ___________
 After looking around the source code, the best thing we can start from is the hint provided for us: "Only people who use the official PicoBrowser are allowed on this site!".
 Thus we will go immediatly to fire Burp Suite & play around with the HTTP Headers.
 > I'll consider that you have already set up your Burp, if not I suggest that you check one of the available guide on the internet, it is highly recommended to have Burp Suite by your side when doing Web stuff.. 
+___________________
 ## Divining In
 1. Starting by refreshing the page & grabbing the challenge `GET` request through the **HTTP History** panel and sending it to the **Repeater**. (You're free to use the Intercept button too.. xd)
 
 ![[Step 1]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/2.png?raw=true "Interception")
-_______
+___________________
 2. We will start by changing the `User-Agent` value with "**PicoBrowser**" as follows:
 ```
 User-Agent: PicoBrowser
 ```
 ![[Step 2]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/3.png?raw=true "User-Agent")
-________________
+___________________
 3. In the response we can see that we seem as we are visiting from another site thus we will use another **HTTP Header** called `Referer` with a value of the our Host:
 ```
 Referer: mercury.picoctf.net:1270 
@@ -54,5 +58,5 @@ X-Forwarded-For: 52.94.223.26
 Accept-Language: sv
 ```
 ![[Flag]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/3.png?raw=true "flag")
-____________
+___________________
 # Bonus!
