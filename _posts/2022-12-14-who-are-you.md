@@ -16,6 +16,8 @@ tags: [web, writeup, easy]
 ![[Challenge Page]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/1.png?raw=true "Challenge Page")
 ___________
 # Walkthrough
+## BEFORE WE START!!
+
 ## Starting Point
 After looking around the source code, the best thing we can start from is the hint provided for us: "Only people who use the official PicoBrowser are allowed on this site!".
 Thus we will go immediatly to fire Burp Suite & play around with the HTTP Headers.
@@ -25,14 +27,32 @@ Thus we will go immediatly to fire Burp Suite & play around with the HTTP Header
 
 ![[Step 1]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/2.png?raw=true "Interception")
 _______
-2. Sorry, this site only worked in 2018.
+2. We will start by changing the `User-Agent` value with "**PicoBrowser**" as follows:
+```
+User-Agent: PicoBrowser
+```
+![[Step 2]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/3.png?raw=true "User-Agent")
+________________
+3. In the response we can see that we seem as we are visiting from another site thus we will use another **HTTP Header** called `Referer` with a value of the our Host:
+```
+Referer: mercury.picoctf.net:1270 
+```
+4. "**Sorry, this site only worked in 2018.**", let's counter that with a simple `Date` **HTTP Header** :
+```
 Date: Monday, 21 11 2018 21:14:34 GMT
-I don&#39;t trust users who can be tracked.
-DNT: 0
+```
+5. "**I don't trust users who can be tracked.**", set the value of the `DNT` Header to **1**:
+```
 DNT: 1
-DNT: null
-This website is only for people from Sweden.
-X-Forwarded-For: 142.250.184.35
-You&#39;re in Sweden but you don&#39;t speak Swedish?
-Accept-Language: en-US,en;q=0.5
+```
+6. "**This website is only for people from Sweden.**", for this one we will use `X-Forwarded-For` to spoof our IP address, I pinged `amazon.se` and grabbed its IP address, you can grab any other swedish one.
+```
+X-Forwarded-For: 52.94.223.26
+```
+7. "**You're in Sweden but you don't speak Swedish?**", makes sense.. let's simply change the language tag in the `Accept-Language` **Header** to the swedish one `sv`
+```
 Accept-Language: sv
+```
+![[Flag]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/3.png?raw=true "flag")
+____________
+# Bonus!
