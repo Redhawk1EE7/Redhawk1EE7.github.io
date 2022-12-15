@@ -7,13 +7,14 @@ tags: [web, writeup, easy]
 ---
 
 # Overview
-**Author: MADSTACKS**
+## Author
+**MADSTACKS**
 
 ## Challenge Description
 **Let me in. Let me iiiiiiinnnnnnnnnnnnnnnnnnnn** 
 
 ## Challenge Hints
-**1. It ain't much, but it's an RFC https://tools.ietf.org/html/rfc2616**
+**1. It ain't much, but it's an RFC** https://tools.ietf.org/html/rfc2616
 
 ## Challenge Page
 ![[Challenge Page]](https://github.com/Redhawk1EE7/Redhawk1EE7.github.io/blob/main/_posts/_img/picoCTF/who-are-you/1.png?raw=true "Challenge Page")
@@ -53,7 +54,7 @@ DNT: 1
 ```
 X-Forwarded-For: 52.94.223.26
 ```
-7. "**You're in Sweden but you don't speak Swedish?**", makes sense.. let's simply change the language tag in the `Accept-Language` **Header** to the swedish one `sv`
+7. "**You're in Sweden but you don't speak Swedish?**", makes sense.. let's simply change the language tag in the `Accept-Language` **Header** to the swedish one `sv`.
 ```
 Accept-Language: sv
 ```
